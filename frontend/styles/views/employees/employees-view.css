@@ -1,0 +1,20 @@
+
+.employees-list .content {
+  display: flex;
+}
+
+.employees-list .employees-grid {
+  flex: 2;
+}
+
+.employees-list .employees-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .employees-list.editing .toolbar,
+  .employees-list.editing .employees-grid {
+    display: none;
+  }
+}

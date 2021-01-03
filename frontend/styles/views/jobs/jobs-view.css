@@ -1,0 +1,22 @@
+
+/*Jobs list view*/
+
+.jobs-view .content {
+  display: flex;
+}
+
+.jobs-view .jobs-grid {
+  flex: 2;
+}
+
+.jobs-view .jobs-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .jobs-view.editing .toolbar,
+  .jobs-view.editing .jobs-grid {
+    display: none;
+  }
+}
