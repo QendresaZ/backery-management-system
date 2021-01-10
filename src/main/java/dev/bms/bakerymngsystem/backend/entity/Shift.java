@@ -1,13 +1,11 @@
 package dev.bms.bakerymngsystem.backend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -93,4 +91,16 @@ public class Shift extends AbstractEntity {
         this.breakEndTime = breakEndTime;
     }
 
+    @Override
+    public String toString() {
+        return "Shift{" +
+                "employee=" + employee +
+                ", shiftDate=" + shiftDate +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", note='" + note + '\'' +
+                ", breakStartTime=" + breakStartTime +
+                ", breakEndTime=" + breakEndTime +
+                '}';
+    }
 }

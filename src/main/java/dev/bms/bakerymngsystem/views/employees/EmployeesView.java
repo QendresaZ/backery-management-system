@@ -72,17 +72,26 @@ public class EmployeesView extends VerticalLayout {
     }
 
     private HorizontalLayout getToolbar() {
-        filterText.setPlaceholder("Filter by name..");
-        filterText.setClearButtonVisible(true);
-        filterText.setValueChangeMode(ValueChangeMode.LAZY);
-        filterText.addValueChangeListener(e -> updateList());
+        configureFilterByNameText();
 
-        Button addEmployeeButton = new Button("Add employee");
-        addEmployeeButton.addClickListener(click -> addEmployee());
+        Button addEmployeeButton = getAddEmployeeButton();
 
         HorizontalLayout toolbar = new HorizontalLayout(filterText, addEmployeeButton);
         toolbar.addClassName("toolbar");
         return toolbar;
+    }
+
+    private void configureFilterByNameText() {
+        filterText.setPlaceholder("Filter by name..");
+        filterText.setClearButtonVisible(true);
+        filterText.setValueChangeMode(ValueChangeMode.LAZY);
+        filterText.addValueChangeListener(e -> updateList());
+    }
+
+    private Button getAddEmployeeButton() {
+        Button addEmployeeButton = new Button("Add Employee");
+        addEmployeeButton.addClickListener(click -> addEmployee());
+        return addEmployeeButton;
     }
 
      void addEmployee() {
@@ -110,7 +119,7 @@ public class EmployeesView extends VerticalLayout {
     }
 
     private void editEmployee(Employee employee) {
-        if(employee == null) {
+        if (employee == null) {
             closeEditor();
         } else {
             employeeForm.setEmployee(employee);
@@ -118,5 +127,4 @@ public class EmployeesView extends VerticalLayout {
             addClassName("editing");
         }
     }
-
 }

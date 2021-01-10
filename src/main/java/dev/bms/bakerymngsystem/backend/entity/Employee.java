@@ -1,10 +1,9 @@
 package dev.bms.bakerymngsystem.backend.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 public class Employee extends AbstractEntity{
@@ -19,12 +18,24 @@ public class Employee extends AbstractEntity{
     @JoinColumn(name = "jobId", nullable = false)
     private Job job;
 
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    private List<Shift> shifts = new LinkedList<>();
+
     private String phone;
 
     private String address;
 
     @NotNull
     private Double hoursPerWeek;
+
+    public Employee() {
+    }
+
+    public Employee(Long id, @NotNull String name, @NotNull String surname) {
+        super(id);
+        this.name = name;
+        this.surname = surname;
+    }
 
     public String getName() {
         return name;
@@ -72,5 +83,13 @@ public class Employee extends AbstractEntity{
 
     public void setHoursPerWeek(Double hoursPerWeek) {
         this.hoursPerWeek = hoursPerWeek;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
     }
 }
