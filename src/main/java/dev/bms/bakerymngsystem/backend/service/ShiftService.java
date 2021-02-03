@@ -7,12 +7,9 @@ import dev.bms.bakerymngsystem.backend.repository.ShiftRepository;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +50,6 @@ public class ShiftService {
                 p = criteriaBuilder.and(p, criteriaBuilder.between(root.get("shiftDate"), fromDate, toDate));
             } else if (fromDate != null) {
                 p = criteriaBuilder.and(p, criteriaBuilder.greaterThanOrEqualTo(root.get("shiftDate"), fromDate));
-//                p = criteriaBuilder.and(p, criteriaBuilder.equal(root.get("shiftDate"), fromDate));
             } else if (toDate != null) {
                 p = criteriaBuilder.and(p, criteriaBuilder.lessThanOrEqualTo(root.get("shiftDate"), toDate));
             }
@@ -63,5 +59,11 @@ public class ShiftService {
             criteriaQuery.orderBy(criteriaBuilder.asc(root.get("shiftDate")));
             return p;
         });
+    }
+
+    public Double findHoursThatEmployeeWorkedInWeekOfShiftDate(Employee employee, LocalDate shiftDate) {
+        System.out.println(shiftDate.with(DayOfWeek.MONDAY));
+        System.out.println(shiftDate.with(DayOfWeek.SUNDAY));
+        return 0d;
     }
 }

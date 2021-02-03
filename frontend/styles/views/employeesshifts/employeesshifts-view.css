@@ -1,0 +1,20 @@
+
+.shift-list .content {
+  display: flex;
+}
+
+.shift-list .shift-grid {
+  flex: 2;
+}
+
+.shift-list .shifts-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .shift-list.editing .toolbar,
+  .shift-list.editing .shift-grid {
+    display: none;
+  }
+}

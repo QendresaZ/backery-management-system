@@ -43,7 +43,6 @@ public class EmployeeForm extends FormLayout {
         job.setItems(jobs);
         job.setItemLabelGenerator(Job::getTitle);
 
-        addClassName("employees-form");
         add(
                 name,
                 surname,

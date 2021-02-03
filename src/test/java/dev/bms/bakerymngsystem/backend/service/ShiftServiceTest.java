@@ -10,15 +10,20 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class ShiftServiceTest {
 
     @Autowired
-    private ShiftRepository shiftRepository;
+    private ShiftService shiftService;
 
     @Test
     public void test() {
-
+        LocalDate shiftDate = LocalDate.now();
+        System.out.println(shiftDate.with(DayOfWeek.MONDAY));
+        System.out.println(shiftDate.with(DayOfWeek.SUNDAY));
     }
 }
